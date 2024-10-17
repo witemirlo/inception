@@ -1,9 +1,6 @@
-FROM alpine:3.19
+FROM debian:bullseye
 
-RUN apk add nginx
-
-# COPY conf/server /etc/nginx/sites-availabre/server
-COPY tools/index.html /usr/share/nginx/html
+RUN apt update && apt install nginx -y
 
 # EXPOSE 443
 # EXPOSE 80/tcp
