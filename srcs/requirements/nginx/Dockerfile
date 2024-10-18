@@ -1,9 +1,12 @@
 FROM debian:bullseye
 
 RUN apt update
-RUN apt install nginx -y
+RUN apt install -y\
+    nginx \
+    openssl
 
-# EXPOSE 443/tcp
-# EXPOSE 80/tcp
+COPY conf/nginx.conf /etc/nginx/conf.d
+
+EXPOSE 443/tcp
 
 CMD ["nginx", "-g", "daemon off;"]
