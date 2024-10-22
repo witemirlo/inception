@@ -3,8 +3,10 @@
 
 FROM alpine:3.19
 
-RUN apk update && \
-    apk add --no-cache \
-    mariadb
+RUN apk update &&\
+    apk add --no-cache\
+    mariadb\
+    mariadb-common\
+    mariadb-client
 
 CMD ["mariadb"]

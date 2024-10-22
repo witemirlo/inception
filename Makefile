@@ -5,7 +5,7 @@ CONTAINER = nginx
 all:
 	docker-compose --file srcs/docker-compose.yml up --detach
 	@echo 
-	docker-compose --file srcs/docker-compose.yml --env-file srcs/.env start
+	docker-compose --file srcs/docker-compose.yml start
 
 clean:
 	docker-compose --file srcs/docker-compose.yml down --rmi all
