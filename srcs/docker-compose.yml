@@ -7,13 +7,14 @@ services:
     image:          nginx:42
     container_name: nginx
     env_file:       .env
-    environment:
-      - DOMAIN_NAME=${DOMAIN_NAME}
     ports:
       - 443:443
   
-  # mariadb:
-  #   restart:        always
-  #   build:          requirements/mariadb/
-  #   image:          mariadb:42
-  #   container_name: mariadb
+  mariadb:
+    restart:        always
+    build:
+      context:      requirements/mariadb/
+      dockerfile:   Dockerfile
+    image:          mariadb:42
+    container_name: mariadb
+    env_file:       .env

@@ -1,4 +1,4 @@
-CONTAINER = nginx
+CONT=
 
 .PHONY: all clean fclean re rebuild
 
@@ -27,4 +27,4 @@ down:
 	docker-compose --file srcs/docker-compose.yml down --rmi all
 
 logs:
-	docker compose -f srcs/docker-compose.yml logs $(CONTAINER)
+	docker compose -f srcs/docker-compose.yml logs ${CONT}
