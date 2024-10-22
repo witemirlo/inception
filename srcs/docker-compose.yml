@@ -1,8 +1,18 @@
 services:
   nginx:
-    build: requirements/nginx/
-    image: nginx
+    restart:        always
+    build:
+      context:      requirements/nginx/
+      dockerfile:   Dockerfile
+    image:          nginx:42
     container_name: nginx
+    environment:
+      - DOMAIN_NAME=${DOMAIN_NAME}
     ports:
       - 443:443
-    restart: always
+  
+  mariadb:
+    restart:        always
+    build:          requirements/mariadb/
+    image:          mariadb:42
+    container_name: mariadb
