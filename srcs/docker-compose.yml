@@ -16,3 +16,13 @@ services:
       dockerfile:   Dockerfile
     container_name: mariadb
     env_file:       .env
+    volumes:
+      - database:/var/lib/mysql/
+
+volumes:
+  database:
+    driver:       local
+    driver_opts: 
+      device:     /home/${LOGNAME}/data/database/
+      type:       none
+      o:          bind
