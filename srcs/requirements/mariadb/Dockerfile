@@ -9,6 +9,6 @@ RUN apk update &&\
     mariadb-common\
     mariadb-client
 
-RUN mariadb --help --verbose
+# RUN mariadb --help --verbose
 
 CMD ["mariadb"]

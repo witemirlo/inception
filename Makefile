@@ -3,15 +3,12 @@ CONT=
 .PHONY: all clean fclean re rebuild
 
 all:
-	docker-compose --file srcs/docker-compose.yml up --detach
-	@echo 
-	docker-compose --file srcs/docker-compose.yml start
+	docker compose --file srcs/docker-compose.yml up --detach
+	docker compose --file srcs/docker-compose.yml start
 
 clean:
-	docker-compose --file srcs/docker-compose.yml down --rmi all
-	@echo 
+	docker compose --file srcs/docker-compose.yml down --rmi all
 	./clean.sh
-	@echo 
 
 fclean: clean
 

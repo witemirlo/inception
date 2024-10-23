@@ -18,7 +18,7 @@ container()
 image()
 {
     printf "Deleting images     ..."
-    if [ $(docker images ls -aq | wc -l) -ne "0" ]; then
+    if [ $(docker image ls -aq | wc -l) -ne "0" ]; then
 	    docker rmi -f $(docker images -a -q) --force > /dev/null  &&\
 	    docker image prune --force > /dev/null  &&\
         printf "\033[32m done\033[0m\n" ||\
