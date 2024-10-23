@@ -16,3 +16,8 @@ services:
       dockerfile:   Dockerfile
     container_name: mariadb
     env_file:       .env
+
+volumes:
+  database:
+    driver: local-persist
+    driver-opts: /home/${LOGNAME}/data
