@@ -3,6 +3,7 @@ CONT=
 .PHONY: all clean fclean re rebuild
 
 all:
+	$(shell if [ ! -d /home/$(shell whoami)/data ]; then mkdir /home/$(shell whoami)/data; fi)
 	docker compose --file srcs/docker-compose.yml up --detach
 	docker compose --file srcs/docker-compose.yml start
 
