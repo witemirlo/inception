@@ -10,7 +10,7 @@ RUN apk update &&\
 
 COPY conf/server.conf /etc/nginx/http.d/
 COPY tools/index.html /var/www/html/
-COPY conf/init.sh /tmp
+COPY conf/init.sh /tmp/
 
 RUN chmod +x /tmp/init.sh
 

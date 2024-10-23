@@ -1,14 +1,13 @@
-# https://wiki.alpinelinux.org/wiki/MariaDB
-# mysql in Alpine linux install mariadb instead
-
 FROM alpine:3.19
 
 RUN apk update &&\
     apk add --no-cache\
     mariadb\
-    mariadb-common\
     mariadb-client
 
-# RUN mariadb --help --verbose
+COPY conf/init.sh /tmp/
+RUN chmod +x /tmp/init.sh
 
-CMD ["mariadb"]
+EXPOSE 3306
+
+CMD ["./tmp/init.sh"]
