@@ -1,0 +1,8 @@
+[mariadb]
+disable_unix_socket
+
+[client]
+protocol=tcp
+
+[mysqld]
+bind-address = 0.0.0.0
