@@ -4,8 +4,8 @@ CONT=
 
 all:
 	$(shell if [ ! -d /home/$(shell whoami)/data ]; then mkdir /home/$(shell whoami)/data; fi)
-	$(shell if [ ! -d /home/$(shell whoami)/data/database ]; then mkdir /home/$(shell whoami)/data/database; fi)
-	$(shell if [ ! -d /home/$(shell whoami)/data/wordpress ]; then mkdir /home/$(shell whoami)/data/wordpress; fi)
+	$(shell if [ ! -d /home/$(shell whoami)/data/db ]; then mkdir /home/$(shell whoami)/data/db; fi)
+	$(shell if [ ! -d /home/$(shell whoami)/data/wp ]; then mkdir /home/$(shell whoami)/data/wp; fi)
 	docker compose --file srcs/docker-compose.yml up --detach
 	docker compose --file srcs/docker-compose.yml start
 

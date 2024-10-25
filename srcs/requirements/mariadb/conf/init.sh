@@ -1,14 +1,10 @@
 #! /bin/sh
 
-# mysql_install_db --user=mysql --datadir=/var/lib/mysql
+chown -R mysql:mysql /var/lib/mysql/
 
+touch ddl_recobery.log
+chown mysql:mysql ddl_recobery.log
 
-# ./etc/init.d/mariadb start
+/usr/bin/mysql_install_db --user=mysql --datadir=/var/lib/mysql --force
 
-# cat /etc/my.cnf.d/mariadb-server.cnf
-
-rc-service mariadb status
-
-mysqld --user=mysql
-
-mysqladmin -u root password ${MYSQL_ROOT_PASSWORD}
+mariadbd --user=mysql

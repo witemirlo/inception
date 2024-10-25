@@ -1,13 +1,13 @@
 services:
   mariadb:
-    restart:        always
+    # restart:        always
     build:
       context:      requirements/mariadb/
       dockerfile:   Dockerfile
     container_name: mariadb
     env_file:       .env
     volumes:
-      - database:/var/lib/mysql/
+      - db:/var/lib/mysql/
 
   wordpress:
     restart:        always  
@@ -17,29 +17,31 @@ services:
     container_name: wordpress
     env_file:       .env
     volumes:
-      - wordpress:/usr/share/webapps/
+      - wp:/usr/share/webapps/
+    depends_on:
+      - mariadb
 
-  nginx:
-    restart:        always  
-    build:
-      context:      requirements/nginx/  
-      dockerfile:   Dockerfile
-    container_name: nginx
-    env_file:       .env
-    ports:
-      - 443:443  
+  # nginx:
+  #   restart:        always  
+  #   build:
+  #     context:      requirements/nginx/  
+  #     dockerfile:   Dockerfile
+  #   container_name: nginx
+  #   env_file:       .env
+  #   ports:
+  #     - 443:443  
   
 volumes:
-  database:
+  db:
     driver:       local
     driver_opts: 
-      device:     /home/${LOGNAME}/data/database
+      device:     /home/${LOGNAME}/data/db
       type:       none
       o:          bind
 
-  wordpress:
+  wp:
     driver:       local
     driver_opts: 
-      device:     /home/${LOGNAME}/data/wordpress
+      device:     /home/${LOGNAME}/data/wp
       type:       none
       o:          bind
