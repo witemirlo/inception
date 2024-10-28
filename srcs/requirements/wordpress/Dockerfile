@@ -3,7 +3,8 @@ FROM alpine:3.19
 RUN apk update &&\
 	apk add --no-cache\
 	php\
-	php-fpm
+	php-fpm\
+	mariadb-client
 
 RUN mkdir -p /usr/share/webapps/
 RUN mkdir -p /var/www/localhost/htdocs/wordpress/
@@ -19,3 +20,6 @@ EXPOSE 3306
 EXPOSE 9000
 
 CMD ["tail", "-f"]
+# COPY conf/init.sh /tmp/
+# RUN chmod +x /tmp/init.sh
+# CMD ["./tmp/init.sh"]

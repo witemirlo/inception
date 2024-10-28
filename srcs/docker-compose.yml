@@ -8,6 +8,8 @@ services:
     env_file:       .env
     volumes:
       - db:/var/lib/mysql/
+    networks: 
+      - inception
 
   wordpress:
     restart:        always  
@@ -20,6 +22,8 @@ services:
       - wp:/usr/share/webapps/
     depends_on:
       - mariadb
+    networks: 
+      - inception
 
   # nginx:
   #   restart:        always  
@@ -30,6 +34,8 @@ services:
   #   env_file:       .env
   #   ports:
   #     - 443:443  
+  #   networks: 
+  #     - inception
   
 volumes:
   db:
@@ -45,3 +51,7 @@ volumes:
       device:     /home/${LOGNAME}/data/wp
       type:       none
       o:          bind
+
+networks:
+  inception:
+    driver: bridge

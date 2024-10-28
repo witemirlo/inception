@@ -1,10 +1,15 @@
 #! /bin/sh
 
-# chown -R mysql:mysql /var/lib/mysql/
+./usr/bin/mariadb-install-db --verbose --user=mysql --datadir=/var/lib/mysql --auth-root-authentication-method=normal --force
+# ./usr/bin/mariadb-secure-installation --user=mysql --datadir=/var/lib/mysql --force
 
-# touch ddl_recobery.log
-# chown mysql:mysql ddl_recobery.log
+# ls /usr/bin | grep ^m
 
-# /usr/bin/mysql_install_db --user=mysql --datadir=/var/lib/mysql --force
+chown -R mysql:mysql /var/lib/mysql/aria_log_control
 
+mariadbd --user=mysql &
+
+# # ls /usr/bin/
+./usr/bin/mariadb-admin -u root password ${MYSQL_ROOT_PASSWORD}
+# kill mariadbd
 # mariadbd --user=mysql
