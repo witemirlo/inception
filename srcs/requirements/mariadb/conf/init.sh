@@ -7,9 +7,9 @@
 
 chown -R mysql:mysql /var/lib/mysql/aria_log_control
 
-mariadbd --user=mysql &
+mariadbd --user=mysql --init-file="/tmp/setup-database"
 
 # # ls /usr/bin/
-./usr/bin/mariadb-admin -u root password ${MYSQL_ROOT_PASSWORD}
+# ./usr/bin/mariadb-admin -u root password ${MYSQL_ROOT_PASSWORD}
 # kill mariadbd
 # mariadbd --user=mysql
