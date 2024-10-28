@@ -1,5 +1,5 @@
 #! /bin/sh
 
-mariadb #-u root -p #${MYSQL_ROOT_PASSWORD}
+envsubst < /tmp/wp-config.php > /usr/share/webapps/wordpress/wp-config.php
 
 tail -f

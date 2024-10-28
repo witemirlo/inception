@@ -3,7 +3,8 @@ FROM alpine:3.19
 RUN apk update &&\
     apk add --no-cache\
     mariadb\
-    mariadb-client
+    mariadb-client\
+    envsubst
 
 COPY conf/setup-database /tmp/
 COPY conf/init.sh /tmp/

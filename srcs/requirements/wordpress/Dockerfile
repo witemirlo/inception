@@ -4,7 +4,8 @@ RUN apk update &&\
 	apk add --no-cache\
 	php\
 	php-fpm\
-	mariadb-client
+	mariadb-client\
+	envsubst
 
 RUN mkdir -p /usr/share/webapps/
 RUN mkdir -p /var/www/localhost/htdocs/wordpress/
@@ -19,7 +20,8 @@ RUN ln -s /usr/share/webapps/wordpress/ /var/www/localhost/htdocs/wordpress/
 EXPOSE 3306
 EXPOSE 9000
 
-CMD ["tail", "-f"]
-# COPY conf/init.sh /tmp/
-# RUN chmod +x /tmp/init.sh
-# CMD ["./tmp/init.sh"]
+COPY conf/wp-config.php /tmp/
+COPY conf/init.sh /tmp/
+RUN chmod +x /tmp/init.sh
+
+CMD ["./tmp/init.sh"]

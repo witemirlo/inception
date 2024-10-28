@@ -1,6 +1,6 @@
 services:
   mariadb:
-    # restart:        always
+    restart:        always
     build:
       context:      requirements/mariadb/
       dockerfile:   Dockerfile
