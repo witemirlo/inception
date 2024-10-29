@@ -8,8 +8,8 @@ services:
     env_file:       .env
     volumes:
       - db:/var/lib/mysql/
-    networks: 
-      - inception
+    # networks: 
+    #   - inception
 
   wordpress:
     restart:        always  
@@ -22,8 +22,8 @@ services:
       - wp:/usr/share/webapps/
     depends_on:
       - mariadb
-    networks: 
-      - inception
+    # networks: 
+    #   - inception
 
   nginx:
     restart:        always  
@@ -32,10 +32,14 @@ services:
       dockerfile:   Dockerfile
     container_name: nginx
     env_file:       .env
+    volumes:
+      - wp:/var/www/html/
+    depends_on:
+      - wordpress
     ports:
       - 443:443  
-    networks: 
-      - inception
+    # networks: 
+    #   - inception
   
 volumes:
   db:
@@ -52,6 +56,6 @@ volumes:
       type:       none
       o:          bind
 
-networks:
-  inception:
-    driver: bridge
+# networks:
+#   inception:
+#     driver: bridge
