@@ -1,13 +1,11 @@
 [mariadb]
 port=3306
-disable_unix_socket
 
 [client]
 port=3306
 protocol=tcp
-disable_unix_socket
 
 [mariadbd]
 port=3306
 bind-address = 0.0.0.0
-disable_unix_socket
+skip_external_locking
