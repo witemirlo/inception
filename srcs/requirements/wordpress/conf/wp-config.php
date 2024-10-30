@@ -26,7 +26,7 @@ define( 'DB_NAME', '${DATABASE_NAME}' );
 define( 'DB_USER', '${LOGIN}' );
 
 /** Database password */
-define( 'DB_PASSWORD', '${MYSQL_USER_PASSWORD}' );
+define( 'DB_PASSWORD', '${MARIADB_USER_PASSWORD}' );
 
 /** Database hostname */
 define( 'DB_HOST', 'mariabd:3306' );
