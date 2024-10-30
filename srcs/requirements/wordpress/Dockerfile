@@ -21,6 +21,8 @@ EXPOSE 3306
 EXPOSE 9000
 
 COPY conf/wp-config.php /tmp/
+COPY conf/www.conf /etc/php82/php-fpm.d/
+
 COPY conf/init.sh /tmp/
 RUN chmod +x /tmp/init.sh
 

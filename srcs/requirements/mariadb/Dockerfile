@@ -6,7 +6,7 @@ RUN apk update &&\
     mariadb-client\
     envsubst
 
-COPY conf/setup-database /tmp/
+COPY conf/setup-database.sql /tmp/
 COPY conf/init.sh /tmp/
 RUN chmod +x /tmp/init.sh
 
