@@ -29,7 +29,7 @@ define( 'DB_USER', '${LOGIN}' );
 define( 'DB_PASSWORD', '${MYSQL_USER_PASSWORD}' );
 
 /** Database hostname */
-define( 'DB_HOST', '${MYSQL_DATABASE}' );
+define( 'DB_HOST', 'mariabd:3306' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
