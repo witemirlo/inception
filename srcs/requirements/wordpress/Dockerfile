@@ -2,8 +2,11 @@ FROM alpine:3.19
 
 RUN apk update &&\
 	apk add --no-cache\
-	php\
-	php-fpm\
+	php82\
+	php82-fpm\
+	php82-cgi\
+	php82-mysqli\
+	fcgi\
 	mariadb-client\
 	envsubst
 
@@ -25,5 +28,8 @@ COPY conf/www.conf /etc/php82/php-fpm.d/
 
 COPY conf/init.sh /tmp/
 RUN chmod +x /tmp/init.sh
+
+# RUN adduser -D -g 'www' www
+# RUN chown -R www:www /usr/share/webapps/wordpress
 
 CMD ["./tmp/init.sh"]
