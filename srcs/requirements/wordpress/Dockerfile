@@ -10,8 +10,15 @@ RUN apk update &&\
 	envsubst\
     shadow
 
-RUN mkdir -p /usr/share/webapps/
-RUN mkdir -p /var/www/localhost/htdocs/wordpress/
+RUN mkdir -p /usr/share/webapps
+RUN mkdir -p /var/www/localhost/htdocs/wordpress
+RUN mkdir -p /run/php
+
+RUN useradd www-data -g www-data
+
+RUN chown -R www-data:www-data /usr/share/webapps
+RUN chown -R www-data:www-data /var/www/localhost/htdocs/wordpress
+RUN chown -R www-data:www-data /run/php
 
 ADD https://wordpress.org/latest.tar.gz /usr/share/webapps/
 
@@ -19,8 +26,6 @@ RUN tar -xzf /usr/share/webapps/latest.tar.gz -C /usr/share/webapps/
 RUN rm /usr/share/webapps/latest.tar.gz
 RUN ln -s /usr/share/webapps/wordpress/ /var/www/localhost/htdocs/wordpress/
 
-RUN useradd www-data -g www-data
-RUN chown -R www-data:www-data /usr/share/webapps
 
 EXPOSE 3306
 EXPOSE 9000
