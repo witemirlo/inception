@@ -23,13 +23,13 @@
 define( 'DB_NAME', '${DATABASE_NAME}' );
 
 /** Database username */
-define( 'DB_USER', '${LOGIN}' );
+define( 'DB_USER', '${MARIADB_USER}' );
 
 /** Database password */
 define( 'DB_PASSWORD', '${MARIADB_USER_PASSWORD}' );
 
 /** Database hostname */
-define( 'DB_HOST', 'mariabd:3306' );
+define( 'DB_HOST', 'mariabd' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );

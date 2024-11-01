@@ -7,8 +7,8 @@ RUN apk update &&\
 	php82-cgi\
 	php82-mysqli\
 	fcgi\
-	mariadb-client\
-	envsubst
+	envsubst\
+    shadow
 
 RUN mkdir -p /usr/share/webapps/
 RUN mkdir -p /var/www/localhost/htdocs/wordpress/
@@ -17,8 +17,10 @@ ADD https://wordpress.org/latest.tar.gz /usr/share/webapps/
 
 RUN tar -xzf /usr/share/webapps/latest.tar.gz -C /usr/share/webapps/
 RUN rm /usr/share/webapps/latest.tar.gz
-
 RUN ln -s /usr/share/webapps/wordpress/ /var/www/localhost/htdocs/wordpress/
+
+RUN useradd www-data -g www-data
+RUN chown -R www-data:www-data /usr/share/webapps
 
 EXPOSE 3306
 EXPOSE 9000
