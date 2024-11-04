@@ -7,11 +7,11 @@ RUN apk update &&\
     envsubst\
     shadow
 
+COPY conf/mariadb-server.cnf /etc/my.cnf.d/
 COPY conf/setup-database.sql /tmp/
 COPY conf/init.sh /tmp/
 RUN chmod +x /tmp/init.sh
 
-# RUN useradd mysql -g mysql
 RUN mkdir -p /run/mysqld
 RUN chown -R mysql:mysql /run/mysqld
 RUN chmod 777 /run/mysqld
@@ -25,7 +25,5 @@ RUN chown -R www-data:www-data /var/lib/mysql
 RUN /usr/bin/mysql_install_db --user=mysql --datadir=/var/lib/mysql --force
 
 EXPOSE 3306
-
-# CMD ["mariadbd", "--user=mysql", "--init-file=/tmp/"]
 
 CMD ["./tmp/init.sh"]
