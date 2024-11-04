@@ -6,6 +6,9 @@ RUN apk update &&\
 	php82-fpm\
 	php82-cgi\
 	php82-mysqli\
+	php82-phar\
+	php82-mbstring\
+	php82-iconv\
 	fcgi\
 	envsubst\
     shadow
@@ -21,11 +24,16 @@ RUN chown -R www-data:www-data /var/www/localhost/htdocs/wordpress
 RUN chown -R www-data:www-data /run/php
 
 ADD https://wordpress.org/latest.tar.gz /usr/share/webapps/
+ADD https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar /usr/local/bin
 
+# wordpress
 RUN tar -xzf /usr/share/webapps/latest.tar.gz -C /usr/share/webapps/
 RUN rm /usr/share/webapps/latest.tar.gz
 RUN ln -s /usr/share/webapps/wordpress/ /var/www/localhost/htdocs/wordpress/
 
+# wp-cli
+RUN mv /usr/local/bin/wp-cli.phar /usr/local/bin/wp
+RUN chmod +x /usr/local/bin/wp
 
 EXPOSE 3306
 EXPOSE 9000
