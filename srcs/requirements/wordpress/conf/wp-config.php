@@ -29,7 +29,7 @@ define( 'DB_USER', '${MARIADB_USER}' );
 define( 'DB_PASSWORD', '${MARIADB_USER_PASSWORD}' );
 
 /** Database hostname */
-define( 'DB_HOST', 'mariabd' );
+define( 'DB_HOST', 'mariadb:3306' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
@@ -79,7 +79,7 @@ $table_prefix = 'wp_';
  *
  * @link https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/
  */
-define( 'WP_DEBUG', false );
+define( 'WP_DEBUG', true );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
