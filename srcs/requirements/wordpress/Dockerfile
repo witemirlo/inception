@@ -34,6 +34,7 @@ RUN ln -s /usr/share/webapps/wordpress/ /var/www/localhost/htdocs/wordpress/
 # wp-cli
 RUN mv /usr/local/bin/wp-cli.phar /usr/local/bin/wp
 RUN chmod +x /usr/local/bin/wp
+RUN chown www-data:www-data /usr/local/bin/wp
 
 EXPOSE 3306
 EXPOSE 9000
