@@ -7,13 +7,14 @@ RUN apk update &&\
     envsubst\
     shadow
 
+# config file
 COPY conf/server.conf /etc/nginx/http.d/
-# COPY tools/index.html /var/www/html/
 
+# init script
 COPY conf/init.sh /tmp/
 RUN chmod +x /tmp/init.sh
 
-# RUN adduser -D -g 'www' www
+# user www-data
 RUN useradd www-data -g www-data
 RUN mkdir -p /var/www/html
 RUN chown -R www-data:www-data /var/www/html
