@@ -6,7 +6,7 @@ all:
 	$(shell if [ ! -d /home/$(shell whoami)/data ]; then mkdir /home/$(shell whoami)/data; fi)
 	$(shell if [ ! -d /home/$(shell whoami)/data/db ]; then mkdir /home/$(shell whoami)/data/db; fi)
 	$(shell if [ ! -d /home/$(shell whoami)/data/wp ]; then mkdir /home/$(shell whoami)/data/wp; fi)
-	docker compose --file srcs/docker-compose.yml build
+	docker compose --file srcs/docker-compose.yml build --no-cache
 	docker compose --file srcs/docker-compose.yml up --detach
 	docker compose --file srcs/docker-compose.yml start
 
