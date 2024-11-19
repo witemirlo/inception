@@ -9,10 +9,16 @@ wp core install \
 --url="${DOMAIN_NAME}" \
 --title="Get Inceptioned" \
 --locale="ES" \
---admin_user="${MARIADB_USER}" \
---admin_password="${MARIADB_USER_PASSWORD}" \
---admin_email="jbedugo@student.42madrid.fr" \
+--admin_user="${WORDPRESS_ADMIN}" \
+--admin_password="${WORDPRESS_ADMIN_PASSWORD}" \
+--admin_email="jberdugo@student.42madrid.fr" \
 --skip-email
+
+wp user create \
+"${WORDPRESS_USER}" \
+"jberdugo@student.42madrid.es" \
+--user_pass="${WORDPRESS_USER_PASSWORD}" \
+--path="/usr/share/webapps/wordpress"
 
 # run php fastcgi daemon
 php-fpm82 -F
